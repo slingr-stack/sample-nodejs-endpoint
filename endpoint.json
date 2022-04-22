@@ -1,0 +1,110 @@
+{
+    "label": "Skeleton",
+    "name": "skeleton",
+    "apiVersion": "v1",
+    "internal": false,
+    "configurationType": "GLOBAL",
+    "deployment": {
+        "profiles":[
+            {
+                "name": "small",
+                "label": "Small",
+                "memory": 128,
+                "description": "Small Memory Allocation"
+            },
+            {
+                "name": "default",
+                "label": "Default",
+                "memory": 256,
+                "description": "Default Memory Allocation"
+            },
+            {
+                "name": "medium",
+                "label": "Medium",
+                "memory": 512,
+                "description": "Medium Memory Allocation"
+            },
+            {
+                "name": "big",
+                "label": "Big",
+                "memory": 256,
+                "description": "Big Memory Allocation"
+            }
+        ],
+        "allowMultipleInstances": false
+    },
+    "status": "ACTIVE",
+    "stores": [{
+        "name": "dataStore1" 
+    }],
+    "events": [
+        {
+            "label": "Inbound Event",
+            "name": "inboundEvent",
+            "description": "Event send for the endpoint each time that a POST request to the root path of the web service."
+        },
+        {
+            "label": "On Upload Finished",
+            "name": "onUploadFinished",
+            "description": "Callback event for when upload of a file has finished"
+        }
+    ],
+    "functions": [
+        {
+            "label": "Random number generator",
+            "name": "randomNumber",
+            "description": "Generates a random integer"
+        },
+        {
+            "label": "Files Upload Testing",
+            "name": "uploadFileFromEndpoint",
+            "description": "downloads a dummy file and uploads it to the app",
+            "callbacks": [
+                {
+                    "name": "onUploadFinished",
+                    "maxWaitingTime": 60000,
+                    "maxExpectedResponses": 1
+                }
+            ]
+        },
+        {
+            "label": "Files Download Testing",
+            "name": "downloadFileFromEndpoint",
+            "description": "downloads a file from the app"
+        },
+        {
+            "label": "Ping",
+            "name": "ping",
+            "description": "The service returns the sent value for the Pong event",
+            "callbacks": [
+                {
+                    "name": "pong",
+                    "maxWaitingTime": 60000,
+                    "maxExpectedResponses": 1
+                }
+            ]
+        },
+        {
+            "label": "Error",
+            "name": "error",
+            "description": "Always throws an exception after to try to execute a method that throws a generic exception."
+        }
+    ],
+    "scripts":[
+        "helpers.js"
+    ],
+    "configuration":[
+        {
+            "name": "token",
+            "label": "Token",
+            "description": "Sample token used on endpoint",
+            "type": "text",
+            "required": true
+        },
+        {
+            "name": "webhook",
+            "label": "Web Services URL",
+            "type": "webhookUrl"
+        }
+    ]
+}
