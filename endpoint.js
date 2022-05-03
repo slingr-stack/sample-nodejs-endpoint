@@ -1,35 +1,8 @@
+
 //////////////////////////////////////////////
 //            Endpoints Framework           //
 //////////////////////////////////////////////
-const { logger } = require('slingr-endpoints');
 const endpoint = require('slingr-endpoints');
-/* The endpoint has the following properties:
-    hooks: { 
-        onEndpointServicesConfigured,
-        onConfigurationReady,
-        onWebServicesReady,
-        onEndpointStart,
-        onEndpointStop
-    }, //These are the available hooks. Depending on the hook, some endpoint services could be not available
-    functions, //This is an object where you will define the endpoint functions
-    webServices:, //This is an object where you will define the endpoint webservices
-    logger: {
-        debug,
-        info,
-        warn,
-        error
-    }, //This is an object where you can access the logger
-    appLogger: {
-        debug,
-        info,
-        warn,
-        error
-    }, //This is an object which will send logs to the app.
-    dataStores, //This is an object that will have the datastores defined in the endpoint.json file.
-    events, //This is an object which will send events to the app
-    files, //This is an object for the management of files
-    httpModule //Axios instance to be used for http requesting 
-*/
 
 //////////////////////////////////////////////
 //              Endpoint Hooks              //
@@ -38,12 +11,12 @@ endpoint.hooks.onEndpointStart = () => {
     // the loggers, endpoint properties, data stores, etc. are initialized at this point. the endpoint is ready to be used.
     endpoint.logger.info('From Hook - Endpoint has started');
     endpoint.appLogger.info('From Hook - Endpoint has started')
-},
-    endpoint.hooks.onEndpointStop = (cause) => {
-        //The endpoint is about to stop at this point. Use this to release all resources that could cause a memory leak. 
-        endpoint.logger.info('From Hook - Endpoint is stopping.');
-        endpoint.appLogger.info('From Hook - Endpoint is stopping.', cause);
-    }
+};
+endpoint.hooks.onEndpointStop = (cause) => {
+    //The endpoint is about to stop at this point. Use this to release all resources that could cause a memory leak. 
+    endpoint.logger.info('From Hook - Endpoint is stopping.');
+    endpoint.appLogger.info('From Hook - Endpoint is stopping.', cause);
+};
 
 //////////////////////////////////////////////
 //            Endpoint Functions            //
@@ -118,33 +91,39 @@ endpoint.functions.error = (req) => {
 endpoint.functions.downloadFileFromEndpoint = (endpointRequest) => {
     const parameters = endpointRequest.params;
     endpoint.files.download(parameters.fileId).then(
-            (res) => {
-                logger.info('File download has completed!')
-                endpoint.events.send('testCallback',null,endpointRequest.id)
-            }
-        );
+        (res) => {
+            logger.info('File download has completed!')
+            endpoint.events.send('testCallback', null, endpointRequest.id)
+        }
+    );
     return { msg: 'file is being downloaded' }
 };
 
 endpoint.functions.uploadFileFromEndpoint = (endpointRequest) => {
     try {
         endpoint.httpModule.get('https://jsoncompare.org/LearningContainer/SampleFiles/PDF/sample-pdf-with-images.pdf',
-        {
-            responseType: "arraybuffer"
-        }).then(
-            (res) => {
-                endpoint.files.upload('somefile.pdf', res.data)
-                    .then((fileResponse) => {
-                        endpoint.events.send('onUploadFinished', fileResponse, endpointRequest.id);
-                    });
-            }
-        );
+            {
+                responseType: "arraybuffer"
+            }).then(
+                (res) => {
+                    endpoint.files.upload('somefile.pdf', res.data)
+                        .then((fileResponse) => {
+                            endpoint.events.send('onUploadFinished', fileResponse, endpointRequest.id);
+                        });
+                }
+            );
     } catch (error) {
-        console.error("wel error es: ",error);
+        console.error("el error es: ", error);
     }
-    
+
     return { msg: 'file is being downloaded' }
 };
+
+endpoint.functions.executeScript = (endpointRequest) => {
+    const {script, parameters} = endpointRequest.params;
+    
+    endpoint.scripts.execute();
+}
 
 //////////////////////////////////////////////
 //          Endpoint Web Services           //
