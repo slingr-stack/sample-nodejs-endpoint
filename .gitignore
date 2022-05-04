@@ -1,3 +1,5 @@
+#Enviroment variables (Only for local deployment and development)
+.env
 # Logs
 logs
 *.log

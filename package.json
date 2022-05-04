@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "start": "node endpoint.js",
+    "startDev": "nodemon endpoint.js"
+  },
+  "dependencies": {
+    "nodemon": "^2.0.15"
+  }
+}

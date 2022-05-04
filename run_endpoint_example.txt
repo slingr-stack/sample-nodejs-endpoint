@@ -1,0 +1,31 @@
+#!/bin/sh
+
+echo "------------------------------------------------------------------------"
+echo " Skeleton endpoint "
+echo "------------------------------------------------------------------------"
+cd $IDEA2_HOME/platform/integrations/endpoints/skeleton
+
+# System properties
+export _endpoint_name=proxy
+export _app_name=nicotestapp
+export _environment=dev
+export _pod_id=id
+export _profile=default
+export _custom_domain=
+export _debug=true
+export _local_deployment=true
+export _base_domain=slingrs.io
+export _webservices_port=10000
+export _endpoints_services_api=https://nicotestapp.slingrs.io/dev/endpoints/proxy/api
+export _token=25534bd0-1dda-4df8-af4a-59137d0839a3
+export _endpoint_config={}
+
+# Endpoint specific properties
+export _endpoint_config="{\"token\":\"exampleToken1234\"}"
+
+npm install
+node endpoint.js
+echo "------------------------------------------------------------------------"
+echo " END - Skeleton endpoint "
+echo "------------------------------------------------------------------------"
+
