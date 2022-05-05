@@ -117,8 +117,7 @@
         }
     ],
     "scripts":[
-        "helpers.js",
-        "exampleScriptToBeExecuted.js"
+        "helpers.js"
     ],
     "configuration":[
         {
