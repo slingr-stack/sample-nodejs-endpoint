@@ -3,7 +3,7 @@ This is a the skeleton of an endpoint that you can fork in order to create your 
 
 You can find more information about how to adjust it here:
 
- *Coming soon*
+[Endpoints Node SDK](https://slingr-stack.github.io/platform/extensions_node_sdk.html)
 
 To have a high level overview of how endpoitns are developed, go to this page:
 
