@@ -10,7 +10,7 @@
 // this is shortcut of the 'ping' function
 endpoint.pingPong = function(callback) {
     return endpoint.ping({}, {}, {
-        'testCallback': callback
+        'pong': callback
     });
 };
 
