@@ -24,13 +24,13 @@ endpoint.hooks.onEndpointStop = (cause) => {
 
 //Functions receive a request parameter which has some info that the platform adds plus.
 //the arguments sent to the function
-endpoint.functions.randomNumber = (req) => {
+endpoint.functions.randomNumber = (endpointRequest) => {
 
     // this log will be sent to the app and can be seen in the general logs in the app monitor.
-    endpoint.appLogger.info('Request to generate random number received', req);
+    endpoint.appLogger.info('Request to generate random number received', endpointRequest);
 
     //This is how we fetch the arguments sent to the function from the slingr app.
-    const params = req.params;
+    const params = endpointRequest.params;
 
     // generate random number
     let max = 10000;
@@ -51,8 +51,8 @@ endpoint.functions.randomNumber = (req) => {
     return responseToApp;
 }
 
-endpoint.functions.findAndSaveDocument = (req) => {
-    const document = req.params;
+endpoint.functions.findAndSaveDocument = (endpointRequest) => {
+    const document = endpointRequest.params;
     //Here we search for a doc with the same id. If found, we update it. 
     //If no id is sent, we save it on the dataStore as a new document.
     if (document.id) {
@@ -82,11 +82,11 @@ endpoint.functions.findAndSaveDocument = (req) => {
     return { msg: 'ok' };
 }
 
-endpoint.functions.ping = (req) => {
+endpoint.functions.ping = (endpointRequest) => {
 
-    endpoint.appLogger.info('Request to ping received', req);
+    endpoint.appLogger.info('Request to ping received', endpointRequest);
 
-    let data = req.params;
+    let data = endpointRequest.params;
 
     let res = {};
     //This is how we access the settings of the endpoint
@@ -94,14 +94,14 @@ endpoint.functions.ping = (req) => {
     res.ping = 'pong';
 
     //send 'pong' event. This will cause either the listener, or the callback to be executed sometime in the future.
-    endpoint.events.send('pong', data, req.id);
+    endpoint.events.send('pong', data, endpointRequest.id);
 
     endpoint.logger.info('Pong sent to app');
 
     return { status: 'ok' };
 };
 
-endpoint.functions.error = (req) => {
+endpoint.functions.error = (endpointRequest) => {
     endpoint.appLogger.warn('Request to generate error received');
 
     throw new Error('Error generated!');

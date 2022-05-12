@@ -19,6 +19,6 @@
   ],
   "dependencies": {
     "nodemon": "^2.0.15",
-    "slingr-endpoints": "^1.2.0"
+    "slingr-endpoints": "^1.3.1"
   }
 }
