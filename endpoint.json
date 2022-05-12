@@ -87,9 +87,26 @@
             "description": "Finds a document in a datastore and then update it.If not found, it will create a new one"
         },
         {
-            "label": "Files Upload Testing",
-            "name": "uploadFileFromEndpoint",
-            "description": "downloads a dummy file and uploads it to the app",
+            "label": "Async Download Of File",
+            "name": "asyncDownloadFileFromEndpoint",
+            "description": "Downloads a file from the app asynchronously",
+            "callbacks": [
+                {
+                    "name": "onDownloadComplete",
+                    "maxWaitingTime": 60000,
+                    "maxExpectedResponses": 1
+                }
+            ]
+        },
+        {
+            "label": "Sync Download Of File",
+            "name": "syncDownloadFileFromEndpoint",
+            "description": "Downloads a file from the app synchronously"
+        },
+        {
+            "label": "Async Upload Of File",
+            "name": "asyncUploadFileFromEndpoint",
+            "description": "Uploads a dummy file to the app asynchronously",
             "callbacks": [
                 {
                     "name": "onUploadComplete",
@@ -99,16 +116,9 @@
             ]
         },
         {
-            "label": "Files Download Testing",
-            "name": "downloadFileFromEndpoint",
-            "description": "downloads a file from the app",
-            "callbacks": [
-                {
-                    "name": "onDownloadComplete",
-                    "maxWaitingTime": 60000,
-                    "maxExpectedResponses": 1
-                }
-            ]
+            "label": "Sync Upload Of File",
+            "name": "syncUploadFileFromEndpoint",
+            "description": "Uploads a dummy file from the app synchronously"
         },
         {
             "label": "Execute Script",
