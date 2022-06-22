@@ -1,5 +1,5 @@
 # Skeleton Endpoint for Node.js
-This is a the skeleton of an endpoint that you can fork in order to create your own endpoints. It has the basic structure of an endpoint with samples of the most common use cases.
+This is a sample of an endpoint that you can check to learn how the NodeJs framework for Slingr works. It has the basic structure of an endpoint with some samples of  some common use cases.
 
 You can find more information about how to adjust it here:
 
