@@ -5,6 +5,7 @@
     "internal": false,
     "configurationType": "GLOBAL",
     "deployment": {
+        "jsEndpoint": true,
         "profiles":[
             {
                 "name": "small",
