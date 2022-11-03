@@ -3,7 +3,7 @@
     "name": "skeleton",
     "apiVersion": "v1",
     "internal": false,
-    "configurationType": "GLOBAL",
+    "configurationType": "GLOBAL", 
     "deployment": {
         "jsEndpoint": true,
         "profiles":[
