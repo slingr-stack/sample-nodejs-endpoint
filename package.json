@@ -1,7 +1,7 @@
 {
-  "name": "skeleton",
+  "name": "sample",
   "version": "1.0.0",
-  "description": "Skeleton Endpoint for creating Slingr Endpoints",
+  "description": "Sample Endpoint for creating Slingr Endpoints",
   "main": "index.js",
   "scripts": {
     "start": "node endpoint.js",
@@ -10,11 +10,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/slingr-stack/skeleton-nodejs-endpoint"
+    "url": "https://github.com/slingr-stack/sample-nodejs-endpoint"
   },
   "keywords": [
     "slingr",
-    "skeleton",
+    "sample",
     "endpoints"
   ],
   "dependencies": {

@@ -1,6 +1,6 @@
 {
-    "label": "Skeleton",
-    "name": "skeleton",
+    "label": "Sample",
+    "name": "sample",
     "apiVersion": "v1",
     "internal": false,
     "configurationType": "GLOBAL", 

@@ -1,9 +1,9 @@
-# Skeleton Endpoint for Node.js
+# Sample Endpoint for Node.js
 This is a sample of an endpoint that you can check to learn how the NodeJs framework for Slingr works. It has the basic structure of an endpoint with some samples of  some common use cases.
 
 You can find more information about how to adjust it here:
 
-[Endpoints Node SDK](https://slingr-stack.github.io/platform/extensions_node_sdk.html)
+[Endpoints Nodejs SDK](https://slingr-stack.github.io/platform/extensions_node_sdk.html)
 
 To have a high level overview of how endpoitns are developed, go to this page:
 
